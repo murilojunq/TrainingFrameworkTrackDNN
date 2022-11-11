@@ -86,10 +86,22 @@ git cms-checkdeps -a -A
 ```
 scram b -j12
 ```
-7. setup for tk Ntuple production
+7. setup for tk Ntuple production: addpkg Validation/RecoTrack and modify Validation/RecoTrack/python/trackingNtuple_cff.py
 
-```
-
+```diff
+@@ -15,10 +15,10 @@ from SimGeneral.TrackingAnalysis.trackingParticleNumberOfLayersProducer_cff impo
+ import Validation.RecoTrack.TrackValidation_cff as _TrackValidation_cff
+ 
+ _includeHits = True
+-#_includeHits = False
++_includeHits = False
+ 
+ _includeSeeds = True
+-#_includeSeeds = False
++_includeSeeds = False
+ 
+ _includeMVA = True
+ #_includeMVA = False
 ```
 8. prepare cmssw config and submit via crab (or other tool)
 
