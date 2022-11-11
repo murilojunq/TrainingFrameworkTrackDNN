@@ -35,7 +35,7 @@ solve this conflict
 
 <img width="552" alt="image" src="https://user-images.githubusercontent.com/7805577/201240787-36bb130c-1dbe-4865-b516-09f9c11f88ae.png">
 
-by choosing a type and keeping the time shift
+by choosing a type and keeping the time shift. e.g.
 
 <img width="269" alt="image" src="https://user-images.githubusercontent.com/7805577/201243171-4b2e3de7-3048-409a-8862-f54a33efa1f7.png">
 
