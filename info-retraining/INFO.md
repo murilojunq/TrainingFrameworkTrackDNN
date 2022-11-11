@@ -92,4 +92,5 @@ scram b -j12
 
 ```
 8. prepare cmssw config and submit via crab (or other tool)
+
 NB: keep the global tag "" to be consistent with the production beamspot, which was updated in 12_5_0_pre5
