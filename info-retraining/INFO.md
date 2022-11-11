@@ -1,21 +1,38 @@
 
-PROCESSING 11_2_X samples under CMSSW_12_5_0_pre5
+## REPROCESSING
 
+how to process 11_2_X samples under CMSSW_12_5_0_pre5
+
+1. release
+
+```
 cmsrel CMSSW_12_5_0_pre5
 cd CMSSW_12_5_0_pre5/src/
 cmsenv
 git cms-init
+```
+2. add DataFormats/SiPixelDetId (just for easier conflict solution)
 
-REVERT flag updates
+```
+git cms-addpkg DataFormats/SiPixelDetId
+```
+
+
+3. revert updates flag updates
+
+need to revert both 34662 and 34509 as mentioned in 
 https://hypernews.cern.ch/HyperNews/CMS/get/tracker-performance/2461/1/1.html
-reverting 34662 and 34509
+
+```
+git revert 8cd0049f2fbb6b7b215890b482c266978864efad
+git cms-checkdeps -a -A
+git revert 62ee6607a1959b4218def6bb952914ae2c8de999
+git cms-checkdeps -a -A
+```
 
 + adjustment on the flag
 
 
-git revert 8cd0049f2fbb6b7b215890b482c266978864efad
-git cms-checkdeps -a -A
-git revert 62ee6607a1959b4218def6bb952914ae2c8de999
 
 MODIFY DataFormats/SiPixelDetId/interface/PixelChannelIdentifier.h
 
