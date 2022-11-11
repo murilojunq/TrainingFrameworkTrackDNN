@@ -105,4 +105,5 @@ scram b -j12
 ```
 8. prepare cmssw config and submit via crab (or other tool)
 
-NB: keep the global tag "" to be consistent with the production beamspot, which was updated in 12_5_0_pre5
+NB: keep the global tag "125X_mcRun3_2022_realistic_v2" to be consistent with the production beamspot, which was updated in 12_5_0_pre5
+the procedure for newer samples is similar. You only need to setup the tk Ntuple and use the appropriate globalTag
