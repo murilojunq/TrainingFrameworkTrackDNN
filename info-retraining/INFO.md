@@ -39,6 +39,7 @@ by choosing a type and keeping the time shift
 
 <img width="269" alt="image" src="https://user-images.githubusercontent.com/7805577/201243171-4b2e3de7-3048-409a-8862-f54a33efa1f7.png">
 
+and complete the second revert
 
 ```
 git add DataFormats/SiPixelDetId/interface/PixelChannelIdentifier.h
