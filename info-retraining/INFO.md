@@ -47,7 +47,7 @@ git revert --continue
 git cms-checkdeps -a -A
 ```
 
-5. adjustments for compilation: Modify DataFormats/SiPixelDigi/interface/PixelDigi.h (NB: this is redundant)
+5. adjustments for compilation: Modify DataFormats/SiPixelDigi/interface/PixelDigi.h (NB: this is redundant in some parts)
 
 ```diff
 @@ -18,16 +18,16 @@ public:
