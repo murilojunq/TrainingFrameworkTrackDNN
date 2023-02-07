@@ -19,7 +19,7 @@ git cms-addpkg DataFormats/SiPixelDetId
 
 
 
-3. revert updates flag updates: you need to revert both 34662 and 34509 as mentioned in 
+3. revert flag updates: you need to revert both 34662 and 34509 as mentioned in 
 https://hypernews.cern.ch/HyperNews/CMS/get/tracker-performance/2461/1/1.html
 
 ```
@@ -47,7 +47,7 @@ git revert --continue
 git cms-checkdeps -a -A
 ```
 
-5. adjustments for compilation: Modify DataFormats/SiPixelDigi/interface/PixelDigi.h (NB: this is redundant)
+5. adjustments for compilation: Modify DataFormats/SiPixelDigi/interface/PixelDigi.h (NB: this is redundant in some parts)
 
 ```diff
 @@ -18,16 +18,16 @@ public:
@@ -105,5 +105,4 @@ scram b -j12
 ```
 8. prepare cmssw config and submit via crab (or other tool)
 
-NB: keep the global tag "125X_mcRun3_2022_realistic_v2" to be consistent with the production beamspot, which was updated in 12_5_0_pre5
-the procedure for newer samples is similar. You only need to setup the tk Ntuple and use the appropriate globalTag
+NB: keep the global tag "125X_mcRun3_2022_realistic_v2" to be consistent with the production beamspot, which was updated in 12_5_0_pre5. The procedure for newer samples is similar. You only need to setup the tk Ntuple and use the appropriate globalTag
