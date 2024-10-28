@@ -42,8 +42,8 @@ def make_model(n_regular_inputs, min_values, max_values):
     _kernel_regularization = network_param_dict["kernel_regularization"]
     _kernel_initializer = network_param_dict["kernel_initializer"]
 
-    reg_inp = Input(n_regular_inputs, name="regular_input_layer")
-    cat_inp = Input(1, name="categorical_input_layer")
+    reg_inp = Input((n_regular_inputs,), name="regular_input_layer")
+    cat_inp = Input((1,), name="categorical_input_layer")
     
     active='elu'
     hidden_wid=32
