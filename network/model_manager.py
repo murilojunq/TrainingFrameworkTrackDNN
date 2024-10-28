@@ -71,7 +71,7 @@ class ModelManager():
                 else:
                     print("Creating new model")
                     stored_model = current_model
-                    stored_model.save(f"{self._initialized_network_storage_path}")
+                    stored_model.save(f"{self._initialized_network_storage_path}.keras")
                 #==========================================================================
 
             #Compile model.
