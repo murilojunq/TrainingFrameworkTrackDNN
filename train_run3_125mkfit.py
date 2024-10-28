@@ -1,6 +1,6 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' # #Silences unnecessary spam from TensorFlow libraries. Set to 0 for full output
-import gpusetter
+#import gpusetter
 import json
 #from helper_functions import balance_true_and_fakes, balance_iterations
 from timer import Timer
@@ -54,70 +54,9 @@ def mixing(*args):
     x=tf.random.shuffle(x) 
     return x
 
-
-path='/ceph/cms/store/user/legianni/tfrecordOLD-ckf3/'
-processes=['DisSUSY1', 'DisSUSY2', 'DisSUSY3', 'DisSUSY4', 'QCD1', 'QCD2', 'TT', 'ZToEE1']
-
-path="/ceph/cms/store/user/legianni/tfrecordNEW-mkfit-125/"
-processes=[
-"DisSUSY-newMK",
-"QCD-newMK",
-"SMS-newMK",
-"SoftQCD-newMK",
-"TT-newMK",
-"ZToEE-newMK",
-]
-
-#path="/ceph/cms/store/user/legianni/tfrecordOLD-mkfit-125/"
-#processes=[
-#"DisSUSY1-MK",
-#"DisSUSY2-MK",
-#"DisSUSY3-MK",
-#"DisSUSY4-MK",
-#"QCD1-MK",
-#"QCD2-MK",
-#"TT-MK",
-#"ZToEE1-MK",
-#]
-
-path='/ceph/cms/store/user/legianni/tfrecordOLD-mkfit-125_v2/'
-processes=[
-'DisSUSY1-MK_v2', 
-'DisSUSY2-MK_v2', 
-'DisSUSY3-MK_v2', 
-'DisSUSY4-MK_v2',
-'QCD1-MK_v2',
-'QCD2-MK_v2',
-'TT-MK_v2',
-'ZToEE1-MK_v2',
-'SoftQCD-newMK_v2',]
-
-#path="/ceph/cms/store/user/legianni/tfrecordNEW-ckf-125_v2/"
-#processes=[
-#'DisSUSY-newCKF_v2',
-#'QCD-newCKF_v2',
-#'SMS-newCKF_v2',
-#'SoftQCD-newCKF_v2',
-#'TT-newCKF_v2',
-#'ZToEE-newCKF_v2']
-
-path="/ceph/cms/store/user/legianni/tfrecordNEW-mkfit-125_PIXELLESSonly/"
-processes=[
-"DisSUSY1-pLess",
-"DisSUSY2-pLess",
-"DisSUSY3-pLess",
-"DisSUSY4-pLess",
-"QCD1-pLess",
-"QCD2-pLess",
-"TT",
-#"XiMinus1-pLess",
-#"XiMinus2-pLess",
-#"XiMinus3-pLess",
-#"XiMinus4-pLess",
-#"XiMinus5-pLess",
-#"ZEE-pLess",
-"XiMinusNOPU-pLess",
-]
+path="/media/murilojunq/New Volume/FilesForTrackingDNNtraining/DNN_tfrecord/"
+#processes = ["0", "1", "2", "3", "4", "5", "6", "7"] for GPU
+processes = ["0"] #for testing in my computer
 
 def main():
     
@@ -135,7 +74,7 @@ def main():
            stat=open("/ceph/cms/store/user/legianni/tfrecordNEW-mkfit-125_v2/"+process+'.txt')
         else:
            files=glob.glob(path+process+"/train/*")
-           stat=open(path+process+'.txt')
+           stat=open(glob.glob(path+process+"/*.txt")[0])
         files=tuple(files)
         datasets[process]=tf.data.TFRecordDataset(files)
         #stat=open(path+process+'.txt')
