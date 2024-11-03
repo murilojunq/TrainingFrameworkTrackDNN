@@ -76,7 +76,19 @@ class ModelManager():
 
             #Compile model.
             metrics = [tf.metrics.AUC()]
-            stored_model.compile(optimizer=tf.keras.optimizers.Adam(lr=network_param_dict["lr"], decay=network_param_dict["decay"]),
+
+            batch_size = network_param_dict.get("batch_size", 32)
+            dataset_size = network_param_dict.get("dataset_size")
+            decay_steps = dataset_size  // batch_size if dataset_size else 1000 #default value
+            #the adam's parameter "decay" isn't working after the last version, so we have to use ExponentialDecay
+            lr_schedule = tf.keras.optimizers.schedules.ExponentialDecay(
+                initial_learning_rate = network_param_dict["lr"],
+                decay_steps = decay_steps,
+                decay_rate = network_param_dict["decay"],
+                staircase=True
+            )
+            
+            stored_model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=lr_schedule),
                                #optimizer=tf.keras.optimizers.SGD(lr=network_param_dict["lr"], decay=network_param_dict["decay"]),
                                loss=network_param_dict["loss"],
                                #loss="binary_crossentropy",
